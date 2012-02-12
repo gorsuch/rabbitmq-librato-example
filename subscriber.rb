@@ -24,9 +24,8 @@ while true do
   q.subscribe(ack: true, message_max: 10) do |msg|
     metric = JSON.parse(msg[:payload])
     DataLogger::Logger.log(action: 'recieve-from-rabbitmq', metric: metric)
-    DataLogger::Logger.log(action: 'add-to-librato') do
-      librato_queue.add metric
-    end
+    librato_queue.add metric
+    DataLogger::Logger.log(action: 'add-to-librato', metric: metric)
   end
   
   DataLogger::Logger.log(action: 'submit-to-librato', size: queue_size(librato_queue)) do
