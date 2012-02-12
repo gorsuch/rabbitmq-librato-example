@@ -23,8 +23,7 @@ librato_queue = Librato::Metrics::Queue.new
 while true do
   q.subscribe(ack: true, message_max: 10) do |msg|
     metric = JSON.parse(msg[:payload])
-    DataLogger::Logger.log(action: 'recieve-from-rabbitmq', 
-                          metric: metric)
+    DataLogger::Logger.log(action: 'recieve-from-rabbitmq', metric: metric)
     DataLogger::Logger.log(action: 'add-to-librato') do
       librato_queue.add metric
     end
