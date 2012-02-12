@@ -1,6 +1,7 @@
 GEM
   remote: http://rubygems.org/
   specs:
+    bunny (0.7.9)
     datalogger (0.0.5)
     excon (0.7.12)
     foreman (0.36.1)
@@ -15,6 +16,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bunny
   datalogger
   foreman
   librato-metrics
