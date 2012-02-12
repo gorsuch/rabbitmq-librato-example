@@ -6,7 +6,6 @@ DataLogger::Logger.component = 'librato-rand-publisher'
 
 c = Bunny.new(ENV['RABBITMQ_URL'])
 c.start
-c.qos
 
 e = c.exchange('')
 
